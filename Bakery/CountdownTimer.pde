@@ -6,6 +6,8 @@ class CountdownTimer {
      if(frameCount % 60 == 0) {
        if(timeCounter > 0) {
          timeCounter--;      
+       } else {
+         gameEnd = true;
        }
      }
   }

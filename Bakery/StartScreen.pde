@@ -1,25 +1,25 @@
 class StartScreen {
-  boolean render = true;
   StartScreen() {}
     
   void render() {
     
-    if (render) {
+    if (gameStart == false) {
       rectMode(CENTER);
       fill(0);
       rect(width/2, height/2, width, height);
       fill(#ffffff);
-      text("Goal: Get to the Flower!", 350, 200);
-      text("Press any key to start playing.", 350, 400);
+      textAlign(CENTER);
+      text("Press arrow keys to move", 200, 100);
+      text("Press space to start playing", 200, 200);
     }
     else {
       background(255);
+      inv.render();
       baker.render();
       baker.move();
     }
     
     if (keyPressed && key == ' ') {
-      render = false;
       gameStart = true;
     }
     
