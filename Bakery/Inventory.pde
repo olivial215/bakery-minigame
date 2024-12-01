@@ -16,13 +16,16 @@ class Inventory {
     }
   }
   
-
   //draw given item in inventory 
   void addItem(PImage item) {
-    //which slot: based on size of items array 
+    imageMode(CENTER);
+    int spaceBetween = slot.width + slot.width - 40;
+    
+    //only add if item isn't already in the inventory 
     if (items.contains(item) == false) {
       items.add(item);
-      image(item, x, y);
+      //which slot: based on size of items array 
+      image(item, x + slot.width/2 + (spaceBetween * items.size()), y);
     }
   }
   
