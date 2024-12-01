@@ -14,9 +14,9 @@ class StartScreen {
     }
     else {
       background(255);
-      inv.render();
       baker.render();
       baker.move();
+      inv.render();
     }
     
     if (keyPressed && key == ' ') {
