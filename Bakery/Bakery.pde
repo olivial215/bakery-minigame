@@ -24,14 +24,21 @@ void setup() {
 }
 
 
+// add an if statement to control the order of the objects being drawn 
+
 void draw() {
   background(#eadcca);
-  startScreen.render();
+  
+  oven.render();
+  baker.render();
+  baker.move();
+  inv.render();
   
   if (gameStart) {
     timer.render();
   }
   
+  startScreen.render();
   endScreen.render();
   
 

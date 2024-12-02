@@ -17,12 +17,6 @@ class StartScreen {
       textAlign(CENTER);
       text("Press 'space' to start playing", 200, 250);
     }
-    else {
-      oven.render();
-      baker.render();
-      baker.move();
-      inv.render();
-    }
     
     if (keyPressed && key == ' ') {
       gameStart = true;
