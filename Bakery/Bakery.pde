@@ -25,8 +25,7 @@ void setup() {
 
 
 void draw() {
-  background(#a87d59);
-  
+  background(#eadcca);
   startScreen.render();
   
   if (gameStart) {
@@ -34,5 +33,7 @@ void draw() {
   }
   
   endScreen.render();
+  
+
 
 }
