@@ -28,10 +28,11 @@ void draw() {
   background(#a87d59);
   
   startScreen.render();
-  endScreen.render();
   
   if (gameStart) {
     timer.render();
   }
+  
+  endScreen.render();
 
 }

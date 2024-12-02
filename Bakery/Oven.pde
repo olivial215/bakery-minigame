@@ -11,7 +11,7 @@ class Oven {
   void render() {
     image(ovenIMG, x, y, 50, 50);
     
-    if (baker.x > x && baker.x < x + 50
+    if (baker.x > x-10 && baker.x < x + 30
          && baker.y > y + 20 && baker.y < y + 50
          && baker.bakerSprite == baker.bakerUp) {
            textAlign(LEFT);
