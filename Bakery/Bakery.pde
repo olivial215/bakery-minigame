@@ -24,13 +24,18 @@ void setup() {
 }
 
 
-// add an if statement to control the order of the objects being drawn 
-
 void draw() {
   background(#eadcca);
   
-  oven.render();
-  baker.render();
+  
+  if (baker.y < oven.y + 10) {
+    baker.render();
+    oven.render();
+  } else {
+    oven.render();
+    baker.render();
+  }
+  
   baker.move();
   inv.render();
   
@@ -40,7 +45,5 @@ void draw() {
   
   startScreen.render();
   endScreen.render();
-  
-
 
 }
