@@ -2,8 +2,10 @@ Baker baker;
 StartScreen startScreen;
 EndScreen endScreen;
 CountdownTimer timer;
-Inventory inv;
+Inventory inventory;
 Oven oven;
+Fridge milkFridge, eggFridge;
+PImage floor;
 
 boolean gameStart;
 boolean gameEnd;
@@ -19,14 +21,20 @@ void setup() {
   startScreen = new StartScreen();
   endScreen = new EndScreen();
   timer = new CountdownTimer();
-  inv = new Inventory();
+  inventory = new Inventory();
   oven = new Oven();
+  milkFridge = new Fridge (235, 70, "milk");
+  eggFridge = new Fridge (300, 70, "egg");
+  floor = loadImage("floor.png");
 }
 
 
 void draw() {
   background(#eadcca);
   
+  image(floor, 0, 115);
+  milkFridge.render();
+  eggFridge.render();
   
   if (baker.y < oven.y + 10) {
     baker.render();
@@ -37,7 +45,8 @@ void draw() {
   }
   
   baker.move();
-  inv.render();
+  inventory.render();
+  
   
   if (gameStart) {
     timer.render();
