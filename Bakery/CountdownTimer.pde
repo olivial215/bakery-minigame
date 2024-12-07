@@ -8,6 +8,7 @@ class CountdownTimer {
          timeCounter--;      
        } else {
          gameEnd = true;
+         endScreen.win = false;
        }
      }
   }

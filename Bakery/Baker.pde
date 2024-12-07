@@ -41,33 +41,36 @@ class Baker {
         }
       }
     }
+   boundary();
     
+  }
+  
+  void boundary() {
     //right boundary 
     if (x + spriteWidth > width) {
       x = width - spriteWidth;
     }
-    
     //left boundary
     if (x < 0) {
       x = 0;
     }
-    
     //top boundary
-    if (y < 0) {
-      y = 0;
+    if (y < 100) {
+      y = 100;
     }
-    
     //bottom boundary 
     if (y + spriteHeight > height) {
       y = height - spriteHeight;
     }
+    
     
   }
   
   //sprite animation
   void updateSliceX() {
     
-    if(keyPressed == true && key == CODED && (keyCode == LEFT || keyCode == RIGHT || keyCode == UP || keyCode == DOWN)) {
+    if(keyPressed == true && key == CODED && (keyCode == LEFT || keyCode == RIGHT || 
+    keyCode == UP || keyCode == DOWN)) {
       movingFrameCount += 1;
       
       if (movingFrameCount % 10 == 0) {
@@ -81,7 +84,6 @@ class Baker {
       sliceX = 0;
     }
   }
-  
   
   //draw baker
   void render() {

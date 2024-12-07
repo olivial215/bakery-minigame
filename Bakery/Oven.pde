@@ -1,29 +1,39 @@
 class Oven {
   PImage ovenIMG;
   int x,y;
+  Inventory inventory;
   
-  Oven() {
+  Oven(int x, int y, Inventory inventory) {
     ovenIMG = loadImage("oven.png");
-    this.x = 100;
-    this.y = height/2;
+    this.x = x;
+    this.y = y;
+    this.inventory = inventory;
   }
   
-  void render() {
-    image(ovenIMG, x, y, 50, 50);
-    
-    if (baker.x > x-10 && baker.x < x + 30
-         && baker.y > y + 20 && baker.y < y + 50
-         && baker.bakerSprite == baker.bakerUp) {
-           textAlign(LEFT);
-      text("Press 'E' to bake", baker.x + 30, baker.y + 20);
-      
-      if (keyPressed && key == 'e') {
+  boolean inRange() {
+    return (baker.x > x - 20 && baker.x < x + ovenIMG.width
+         && baker.y > y && baker.y < y + ovenIMG.height
+         && baker.bakerSprite == baker.bakerUp);
+  }
+  
+  void handleBake() {
+    if (keyPressed && key == 'e' && inRange()) {
+      if(inventory.contains(mixer.fullMix)) {
         gameEnd = true;
+        endScreen.win = true;
+      } else if (inventory.contains(mixer.partialMix)) {
+        gameEnd = true;
+      } else {
+        //if inventory does not contain a mix 
+        //show error message
       }
     }
   }
-  
-  // constrain baker from walking over oven:
+    
+  void render() {
+    handleBake();
+    image(ovenIMG, x, y);
+  }
   
   
 }
