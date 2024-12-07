@@ -1,4 +1,4 @@
-PFont pixel;
+PFont pixel, pixel2;
 
 StartScreen startScreen;
 EndScreen endScreen;
@@ -22,6 +22,7 @@ void setup() {
   size(400, 300);
   background(255);
   pixel = createFont("m5x7.ttf", 16);
+  pixel2 = createFont("m5x7.ttf", 20);
   
   gameStart = false;
   gameEnd = false;
@@ -88,6 +89,9 @@ void draw() {
   }
   
   startScreen.render();
-  endScreen.render();
+  
+  if (gameEnd) {
+    endScreen.render();
+  }
 
 }

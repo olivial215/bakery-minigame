@@ -28,17 +28,15 @@ class Mixer {
   }
   
   void handleMix() {
-    if (inventory.items.size() != 4 && inventory.items.size() > 0) {
+    if (inventory.hasAll()) {
       inventory.clearItems();
-      inventory.addItem(partialMix);
-    }
-    
-    if (inventory.items.size() == 0) {
+      inventory.addItem(fullMix);
+    } else if (inventory.mix.size() == 0) {
       //"You don't have anything to mix!"
     } else {
       inventory.clearItems();
-      inventory.addItem(fullMix);
-    } 
+      inventory.addItem(partialMix);
+    }
   }
   
   void render() {

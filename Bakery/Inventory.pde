@@ -1,7 +1,8 @@
 class Inventory {
   int x, y;
   int spacing;
-  ArrayList<PImage> items;
+  ArrayList<PImage> items; //items shown in inventory
+  ArrayList<PImage> mix; //items in mix
   PImage slot;
   
   Inventory() {
@@ -9,6 +10,7 @@ class Inventory {
     this.y = 10;
     this.spacing = 42;
     this.items = new ArrayList();
+    this.mix = new ArrayList();
     this.slot = loadImage("slot.png");
   }
   
@@ -40,8 +42,11 @@ class Inventory {
   void addItem(PImage item) {
     if (items.contains(item) == false) {
       items.add(item);
+      if (item != mixer.fullMix && item != mixer.partialMix) {
+        mix.add(item);
+      }
     }
-  } 
+  }
   
   /*
   Clears inventory items 
@@ -52,6 +57,17 @@ class Inventory {
   
   boolean contains(PImage item) {
     return items.contains(item);
+  }
+  
+  
+  /**
+  does the mix have all ingredients?
+  **/
+  boolean hasAll() {
+    return mix.contains(flourInvIMG) &&
+    mix.contains(sugarInvIMG) &&
+    mix.contains(eggFridge.egg) &&
+    mix.contains(milkFridge.milk);
   }
   
   /*
