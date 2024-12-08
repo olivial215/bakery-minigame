@@ -104,4 +104,20 @@ class Fridge {
     image(currentIMG, x, y);
   }
   
+  void renderMsg() {
+    Message openMsg = new Message("press 'e' to open");
+    Message closeMsg = new Message("press 'e' to close");
+    Message collectMsg = new Message("press 'c' to collect");
+    
+    if(this.inRange()) {
+      if (this.closed) {
+        openMsg.render();
+      } else if(this.collected) {
+        closeMsg.render();
+      } else {
+        collectMsg.render();
+      }
+    }
+  }
+  
 }

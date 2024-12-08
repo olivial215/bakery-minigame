@@ -35,5 +35,10 @@ class Oven {
     image(ovenIMG, x, y);
   }
   
-  
+  void renderMsg() {
+    if(this.inRange() && inventory.hasMix()) {
+      Message message = new Message("press 'e' to bake");
+      message.render();
+    }
+  }
 }

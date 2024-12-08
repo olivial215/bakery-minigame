@@ -59,6 +59,18 @@ class Inventory {
     return items.contains(item);
   }
   
+  boolean hasMix() {
+    return contains(mixer.fullMix) ||
+    contains(mixer.partialMix);
+  }
+  
+  boolean hasIngredient() {
+    return contains(eggFridge.egg) ||
+    contains(milkFridge.milk) ||
+    contains(flour.invIMG) ||
+    contains(sugar.invIMG);
+  }
+  
   
   /**
   does the mix have all ingredients?

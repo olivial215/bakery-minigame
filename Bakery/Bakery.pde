@@ -83,6 +83,21 @@ void draw() {
   botCounter.render();
   flour.render();
   sugar.render();
+
+  //render messages
+  flour.renderMsg();
+  sugar.renderMsg();
+  eggFridge.renderMsg();
+  milkFridge.renderMsg();
+  mixer.renderMsg();
+  oven.renderMsg();
+  
+  /*
+  if (flour.inRange() || sugar.inRange()) {
+    Message message = new Message("press 'c' to collect");
+    message.render();
+  }
+  */
   
   if (gameStart) {
     timer.render();

@@ -34,4 +34,11 @@ class Ingredient {
       image(gameIMG, x, y);
     }
   }
+  
+  void renderMsg() {
+    if(this.inRange() && !collected) {
+      Message message = new Message("press 'c' to collect");
+      message.render();
+    }
+  }
 }

@@ -43,4 +43,12 @@ class Mixer {
     mix();
     image(mixer, x, y);
   }
+  
+    
+  void renderMsg() {
+    if(this.inRange() && inventory.hasIngredient()) {
+      Message message = new Message("press 'e' to mix");
+      message.render();
+    }
+  }
 }
