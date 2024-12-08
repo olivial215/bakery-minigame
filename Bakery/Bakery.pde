@@ -70,8 +70,10 @@ void draw() {
   if (baker.y < midCounter.y) {
     baker.render();
     midCounter.render();
+    mixer.render();
   } else {
     midCounter.render();
+    mixer.render();
     baker.render();
   }
   
@@ -81,8 +83,6 @@ void draw() {
   botCounter.render();
   flour.render();
   sugar.render();
-  mixer.render();
-  
   
   if (gameStart) {
     timer.render();

@@ -53,16 +53,22 @@ class Baker {
   
   boolean atBoundary(int newX, int newY) {
     return
-    newX + spriteWidth > width ||
+    //right boundary
+    newX + spriteWidth > width - 30 ||
+    //left boundary
     newX < 0 || 
+    //top boundary
     newY < 100 ||
-    newY == 100 ||
-    newY + spriteHeight > height - 50;
+    //bot boundary
+    newY + spriteHeight > height - 25;
   }
   
   boolean isColliding(int newX, int newY, Counter counter) {
-    return (newX > counter.x - 20 && newX < counter.x + counter.counter.width -10 &&
-          newY > counter.y - 15  && newY < counter.y + counter.counter.height - 20);
+    return
+    newX > counter.x - 25 && 
+    newX < counter.x + counter.counter.width - 5 &&
+    newY > counter.y - 25  && 
+    newY < counter.y + counter.counter.height - 30;
   }
   
   //sprite animation
