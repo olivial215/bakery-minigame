@@ -30,7 +30,7 @@ void setup() {
   endScreen = new EndScreen();
   timer = new CountdownTimer();
   
-  baker = new Baker(width/2, height/2);
+  baker = new Baker(50, height/2);
   inventory = new Inventory();
   oven = new Oven(110, 87, inventory);
   milkFridge = new Fridge(235, 70, "milk");

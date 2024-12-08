@@ -22,48 +22,47 @@ class Baker {
   
   //move baker within boundaries
   void move() {
-    if (keyPressed == true) {
+    int dx = 0, dy = 0;
+    
+    if (keyPressed) {
       
       if (key == CODED) {
         
         if(keyCode == LEFT) {
-          x -= 2;
+          dx= -2;
           bakerSprite = bakerLeft;
         } else if (keyCode == RIGHT) {
-          x += 2;
+          dx = 2;
           bakerSprite = bakerRight;
         } else if (keyCode == UP) {
-          y -= 2;
+          dy = -2;
           bakerSprite = bakerUp;
         } else if (keyCode == DOWN) {
-          y += 2;
+          dy = 2;
           bakerSprite = bakerDown;
         }
       }
     }
-   boundary();
-    
+   
+   if (!isColliding(x + dx, y + dy, midCounter) && !atBoundary(x + dx, y + dy)) {
+     x += dx;
+     y += dy;
+   }
+
   }
   
-  void boundary() {
-    //right boundary 
-    if (x + spriteWidth > width) {
-      x = width - spriteWidth;
-    }
-    //left boundary
-    if (x < 0) {
-      x = 0;
-    }
-    //top boundary
-    if (y < 100) {
-      y = 100;
-    }
-    //bottom boundary 
-    if (y + spriteHeight > height) {
-      y = height - spriteHeight;
-    }
-    
-    
+  boolean atBoundary(int newX, int newY) {
+    return
+    newX + spriteWidth > width ||
+    newX < 0 || 
+    newY < 100 ||
+    newY == 100 ||
+    newY + spriteHeight > height - 50;
+  }
+  
+  boolean isColliding(int newX, int newY, Counter counter) {
+    return (newX > counter.x - 20 && newX < counter.x + counter.counter.width -10 &&
+          newY > counter.y - 15  && newY < counter.y + counter.counter.height - 20);
   }
   
   //sprite animation
