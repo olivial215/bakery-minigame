@@ -1,5 +1,5 @@
 class CountdownTimer {
-  int timeCounter = 300;
+  int timeCounter = 60;
   CountdownTimer() {}
   
   void updateTimeRemaining() {
@@ -14,6 +14,7 @@ class CountdownTimer {
   }
   
   void render() {
+    textFont(pixel2);
     this.updateTimeRemaining();
     fill(#000000);
     textAlign(RIGHT);

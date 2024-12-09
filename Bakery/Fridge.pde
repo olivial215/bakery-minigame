@@ -64,9 +64,11 @@ class Fridge {
       collected = true;
       if (this.type == "milk") {
         inventory.addItem(milk);
+         collect.play();
       }
       if (this.type == "egg") {
         inventory.addItem(egg);
+        collect.play();
       }
     }
   }

@@ -17,12 +17,13 @@ class Ingredient {
       if (keyPressed && key == 'c') {
         inventory.addItem(invIMG);
         collected = true;
+        collect.play();
       }
     }
   }
   
   boolean inRange() {
-  return (baker.x > x && baker.x < x + gameIMG.width
+  return (baker.x > x- 5 && baker.x < x + gameIMG.width
     && baker.y > y - 50 
     && baker.bakerSprite == baker.bakerDown);
   }

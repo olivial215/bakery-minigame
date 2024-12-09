@@ -1,4 +1,7 @@
+import processing.sound.*;
+
 PFont pixel, pixel2;
+SoundFile music, collect;
 
 StartScreen startScreen;
 EndScreen endScreen;
@@ -13,7 +16,7 @@ Ingredient flour, sugar;
 Counter topCounter, midCounter, botCounter, sideCounter;
 
 
-PImage floor, counter1, counter2, counter3, counter4;
+PImage floor, counter1, counter2, counter3, counter4, board;
 PImage flourInvIMG, flourGameIMG, sugarInvIMG, sugarGameIMG; 
 
 boolean gameStart, gameEnd;
@@ -23,6 +26,9 @@ void setup() {
   background(255);
   pixel = createFont("m5x7.ttf", 16);
   pixel2 = createFont("m5x7.ttf", 20);
+  collect = new SoundFile(this, "collect.mp3");
+  music = new SoundFile(this, "music.mp3");
+  music.play();
   
   gameStart = false;
   gameEnd = false;
@@ -37,6 +43,7 @@ void setup() {
   eggFridge = new Fridge(300, 70, "egg");
   mixer = new Mixer(160, 160, inventory);
   floor = loadImage("floor.png");
+  board = loadImage("board.png");
   
   flourInvIMG = loadImage("flour.png");
   flourGameIMG = loadImage("tableFlour.png");
@@ -59,51 +66,50 @@ void setup() {
 
 
 void draw() {
+  
   background(#eadcca);
   
-  image(floor, 0, 115);
-  milkFridge.render();
-  eggFridge.render();
-  oven.render();
-  topCounter.render();
-  
-  if (baker.y < midCounter.y) {
-    baker.render();
-    midCounter.render();
-    mixer.render();
-  } else {
-    midCounter.render();
-    mixer.render();
-    baker.render();
+  if (!gameStart) {
+    startScreen.render();
   }
-  
-  baker.move();
-  inventory.render();
-  sideCounter.render();
-  botCounter.render();
-  flour.render();
-  sugar.render();
-
-  //render messages
-  flour.renderMsg();
-  sugar.renderMsg();
-  eggFridge.renderMsg();
-  milkFridge.renderMsg();
-  mixer.renderMsg();
-  oven.renderMsg();
-  
-  /*
-  if (flour.inRange() || sugar.inRange()) {
-    Message message = new Message("press 'c' to collect");
-    message.render();
-  }
-  */
   
   if (gameStart) {
     timer.render();
-  }
+    
+    image(floor, 0, 115);
+    milkFridge.render();
+    eggFridge.render();
+    oven.render();
+    topCounter.render();
   
-  startScreen.render();
+    if (baker.y < midCounter.y) {
+      baker.render();
+      midCounter.render();
+      mixer.render();
+      image(board, 220, 172);
+      
+    } else {
+      midCounter.render();
+      mixer.render();
+      image(board, 220, 172);
+      baker.render();
+    }
+  
+    baker.move();
+    inventory.render();
+    sideCounter.render();
+    botCounter.render();
+    flour.render();
+    sugar.render();
+
+    //render messages
+    flour.renderMsg();
+    sugar.renderMsg();
+    eggFridge.renderMsg();
+    milkFridge.renderMsg();
+    mixer.renderMsg();
+    oven.renderMsg();
+  }
   
   if (gameEnd) {
     endScreen.render();
