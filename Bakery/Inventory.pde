@@ -48,22 +48,25 @@ class Inventory {
     }
   }
   
-  /*
-  Clears inventory items 
-  */
+  //Clears inventory items 
   void clearItems() {
     items.clear();
   }
   
+  //does the inv contain the given item?
   boolean contains(PImage item) {
     return items.contains(item);
   }
   
+  //does the player have a mixture?
+  //this is used to allow the player to bake
   boolean hasMix() {
     return contains(mixer.fullMix) ||
     contains(mixer.partialMix);
   }
   
+  //does the player have an ingredient?
+  //this is used to allow the player to use the mixer
   boolean hasIngredient() {
     return contains(eggFridge.egg) ||
     contains(milkFridge.milk) ||
@@ -72,9 +75,7 @@ class Inventory {
   }
   
   
-  /**
-  does the mix have all ingredients?
-  **/
+  // did the player collect all the ingredients?
   boolean hasAll() {
     return mix.contains(flourInvIMG) &&
     mix.contains(sugarInvIMG) &&
@@ -82,9 +83,8 @@ class Inventory {
     mix.contains(milkFridge.milk);
   }
   
-  /*
-  Render the inventory by drawing its slots and items
-  */
+
+  //Renders the inventory by drawing its slots and items
   void render() {
     drawSlots();
     drawItems();

@@ -1,3 +1,9 @@
+/*
+Message objects are used when the player is in range of an object 
+that can be interacted with.
+It takes in a string, which should be instructions for how to interact
+with the object in range.
+*/
 class Message {
   String text;
   float textWidth;
@@ -10,6 +16,7 @@ class Message {
     this.y = 275;
   }
   
+  //renders the message 
   void render() {
     textFont(pixel);
     strokeWeight(2);

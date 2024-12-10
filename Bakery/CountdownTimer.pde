@@ -1,7 +1,11 @@
 class CountdownTimer {
-  int timeCounter = 60;
+  int timeCounter = 90;
   CountdownTimer() {}
   
+  /*
+  decrease time remaining every second 
+  (every 60 frames) until it reaches 0
+  */
   void updateTimeRemaining() {
      if(frameCount % 60 == 0) {
        if(timeCounter > 0) {
@@ -13,6 +17,7 @@ class CountdownTimer {
      }
   }
   
+  //render time in top right corner 
   void render() {
     textFont(pixel2);
     this.updateTimeRemaining();

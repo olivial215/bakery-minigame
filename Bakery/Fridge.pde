@@ -13,6 +13,8 @@ class Fridge {
   boolean collected;
   boolean keyProcessed;
   
+  //probably should use Ingredient objects instead 
+  
   Fridge(int x, int y, String type) {
     this.x = x;
     this.y = y;
@@ -98,14 +100,13 @@ class Fridge {
   }
 
   
-  /*
-  Renders fridge after update 
-  */
+  //Renders fridge after updates
   void render() {
     updateFridge();
     image(currentIMG, x, y);
   }
   
+  //rendes the instructions message based on fridge status 
   void renderMsg() {
     Message openMsg = new Message("press 'e' to open");
     Message closeMsg = new Message("press 'e' to close");
@@ -120,6 +121,5 @@ class Fridge {
         collectMsg.render();
       }
     }
-  }
-  
+  } 
 }

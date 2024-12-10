@@ -15,7 +15,6 @@ Mixer mixer;
 Ingredient flour, sugar;
 Counter topCounter, midCounter, botCounter, sideCounter;
 
-
 PImage floor, counter1, counter2, counter3, counter4, board;
 PImage flourInvIMG, flourGameIMG, sugarInvIMG, sugarGameIMG; 
 

@@ -20,14 +20,15 @@ class Baker {
     this.movingFrameCount = 0;
   }
   
-  //move baker within boundaries
+  /*
+  update coordinates of the baker based on key presses.
+  update sprite sheet based on direction player is facing 
+  */
   void move() {
     int dx = 0, dy = 0;
     
     if (keyPressed) {
-      
-      if (key == CODED) {
-        
+      if (key == CODED) {     
         if(keyCode == LEFT) {
           dx= -2;
           bakerSprite = bakerLeft;
@@ -44,6 +45,7 @@ class Baker {
       }
     }
    
+   //only update the coords if the updated coords dont go past any boundaries 
    if (!isColliding(x + dx, y + dy, midCounter) && !atBoundary(x + dx, y + dy)) {
      x += dx;
      y += dy;
@@ -51,6 +53,7 @@ class Baker {
 
   }
   
+  //are the given x and y coords out of bounds?
   boolean atBoundary(int newX, int newY) {
     return
     //right boundary
@@ -63,6 +66,7 @@ class Baker {
     newY + spriteHeight > height - 25;
   }
   
+  //are the given x and y coords colliding with the given counter?
   boolean isColliding(int newX, int newY, Counter counter) {
     return
     newX > counter.x - 25 && 
